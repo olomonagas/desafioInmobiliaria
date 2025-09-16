@@ -118,14 +118,16 @@ propiedades = [
 
 function cargar_propiedades(alquiler_venta, principal, section_name) {
   let contador = 0
+    
     for (let propiedad of propiedades) {
-        if (principal && contador === 3 ) return
+        if (principal == true && contador === 3 ) return
         console.log(propiedad)
     if (propiedad.alquiler_venta === alquiler_venta) {
       //console.log(propiedad.titulo);
       const propiedadesSection = document.querySelector(section_name);
+      
+      // Permitido o no fumar
       const html_smoke = document.createElement("p");
-
       if (propiedad.smoke) {
         html_smoke.className += "text-success";
         html_smoke.innerHTML +=
@@ -135,26 +137,26 @@ function cargar_propiedades(alquiler_venta, principal, section_name) {
           '<i class="fas fa-smoking-ban"></i> No se permite fumar';
         html_smoke.className += "text-danger";
       }
-
+      
+      // Permitido o no mascotas
       const html_mascotas = document.createElement("p");
       if (propiedad.mascotas) {
         html_mascotas.className += "text-success";
         html_mascotas.innerHTML +=
           '<i class="fas fa-paw"></i> Mascotas permitidas';
       } else {
-        html_mascotas.className += "text-danger";
         html_mascotas.innerHTML +=
-          '<i class="fa-solid fa-ban"></i> No se permiten mascotas';
+        '<i class="fa-solid fa-ban"></i> No se permiten mascotas';
+        html_mascotas.className += "text-danger";
       }
 
       propiedadesSection.innerHTML += `
           
             <div class="col-md-4 mb-4">
             <div class="card">
-            <img
-            src="${propiedad.imagen}"
+            <img src="${propiedad.imagen}"
             class="card-img-top"
-            alt="Imagen del departamento"
+            alt="Imagen de la propiedaddepartamento"
             />
             <div class="card-body">
             <h5 class="card-title">
@@ -164,8 +166,7 @@ function cargar_propiedades(alquiler_venta, principal, section_name) {
             ${propiedad.descripcion}  
             </p>
             <p>
-            <i class="fas fa-map-marker-alt"></i> 123 Luxury Lane,
-            Prestige Suburb, CA 45678
+            <i class="fas fa-map-marker-alt"></i> ${propiedad.direccion}
             </p>
             <p>
             <i class="fas fa-bed"></i> ${propiedad.habitaciones} Habitaciones |
