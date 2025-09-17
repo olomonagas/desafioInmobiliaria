@@ -116,6 +116,7 @@ propiedades = [
   },
 ];
 
+
 function cargar_propiedades(alquiler_venta, principal, section_name) {
   let contador = 0
     
@@ -166,13 +167,15 @@ function cargar_propiedades(alquiler_venta, principal, section_name) {
             ${propiedad.descripcion}  
             </p>
             <p>
-            <i class="fas fa-map-marker-alt"></i> ${propiedad.direccion}
+            <i class="fas fa-map-marker-alt"></i>${propiedad.direccion}
             </p>
             <p>
             <i class="fas fa-bed"></i> ${propiedad.habitaciones} Habitaciones |
             <i class="fas fa-bath"></i> ${propiedad.baños} Baños
             </p>
-            <p><i class="fas fa-dollar-sign"></i> ${propiedad.precio}</p>
+            <p><i class="fas fa-dollar-sign"></i> 
+            ${new Intl.NumberFormat("de-DE", { style: "currency", currency: "USD" }).format(
+            propiedad.precio,)}</p>
             ${html_smoke.outerHTML}
             ${html_mascotas.outerHTML}
             </div>
